@@ -2,7 +2,7 @@
   "name": "friends",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "tsc && vite build && vite preview --host --open"
   },
@@ -15,6 +15,8 @@
     "vite": "^5.0.11"
   },
   "dependencies": {
-    "babylonjs": "^6.38.0"
+    "@babylonjs/core": "^6.43.0",
+    "@babylonjs/gui": "^6.43.0",
+    "@babylonjs/inspector": "^6.43.0"
   }
 }
