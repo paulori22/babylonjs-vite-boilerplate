@@ -12,7 +12,7 @@ import {
     Texture,
     Vector3,
 } from "@babylonjs/core";
-import { Card } from "./Entity";
+import { Board, Card } from "./Entity";
 export class AppOne {
     engine: Engine;
     scene: Scene;
@@ -87,8 +87,9 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     let startPos = 2;
     sphere.position.y = startPos; */
 
+    const board = new Board(scene);
     // Our built-in 'ground' shape.
-    var ground = MeshBuilder.CreateGround(
+    /*     var ground = MeshBuilder.CreateGround(
         "ground",
         { width: 6, height: 6 },
         scene,
@@ -97,7 +98,7 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     groundMaterial.diffuseColor = new Color3(0.5, 0.8, 0.5); // RGB for a greenish color
     ground.material = groundMaterial;
     groundMaterial.bumpTexture = new Texture("./normal.jpg", scene);
-    //groundMaterial.bumpTexture.level = 0.125;
+    //groundMaterial.bumpTexture.level = 0.125; */
 
     /*     var redMaterial = new BABYLON.StandardMaterial("redMaterial", scene);
     redMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0); // RGB for red

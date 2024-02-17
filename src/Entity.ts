@@ -1,4 +1,12 @@
-import { Mesh, MeshBuilder, Scene, Vector3 } from "@babylonjs/core";
+import {
+    Color3,
+    Mesh,
+    MeshBuilder,
+    Scene,
+    StandardMaterial,
+    Texture,
+    Vector3,
+} from "@babylonjs/core";
 import { AdvancedDynamicTexture, TextBlock } from "@babylonjs/gui";
 
 export class Card {
@@ -63,5 +71,23 @@ export class Card {
             "pointRight",
         ) as TextBlock;
         pointRightTextBlock.text = this.points.toString();
+    }
+}
+
+export class Board {
+    public scene: Scene;
+    public mesh: Mesh;
+
+    constructor(scene: Scene) {
+        this.scene = scene;
+        this.mesh = MeshBuilder.CreateGround(
+            "ground",
+            { width: 6, height: 6 },
+            this.scene,
+        );
+
+        var groundMaterial = new StandardMaterial("groundMaterial", scene);
+        groundMaterial.diffuseTexture = new Texture("texture/grass.jpg", scene);
+        this.mesh.material = groundMaterial;
     }
 }
