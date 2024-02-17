@@ -75,7 +75,7 @@ var createScene = function (engine: Engine, canvas: HTMLCanvasElement) {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    const card = new Card(scene, "Card Name", "Card Description");
+    const card = new Card(scene, "Card Name", "Card Description", 2);
     //card.mesh.position = new Vector3(1, 3, 0);
     // Our built-in 'sphere' shape.
     /*     var sphere = MeshBuilder.CreateSphere(
