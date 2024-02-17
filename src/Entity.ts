@@ -1,19 +1,5 @@
-import {
-    Color3,
-    Mesh,
-    MeshBuilder,
-    Scene,
-    StandardMaterial,
-    Vector3,
-} from "@babylonjs/core";
-import {
-    AdvancedDynamicTexture,
-    Button,
-    Control,
-    Image,
-    StackPanel,
-    TextBlock,
-} from "@babylonjs/gui";
+import { Mesh, MeshBuilder, Scene, Vector3 } from "@babylonjs/core";
+import { AdvancedDynamicTexture, TextBlock } from "@babylonjs/gui";
 
 export class Card {
     public scene: Scene;
