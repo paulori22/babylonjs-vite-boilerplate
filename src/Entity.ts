@@ -91,3 +91,94 @@ export class Board {
         this.mesh.material = groundMaterial;
     }
 }
+
+export class BuyPile {
+    private _pile: Card[] = [];
+
+    public search() {
+        //this could be 3 if elfs are in the player garden
+        if (this._pile.length >= 2) {
+            return [this._pile.shift(), this._pile.shift()];
+        }
+        return null;
+    }
+
+    public buy(quantity: number) {
+        if (this._pile.length >= quantity) {
+            const buyCards = [];
+            for (let i = 0; i < quantity; i++) {
+                buyCards.push(this._pile.shift());
+            }
+            return buyCards;
+        }
+        return null;
+    }
+
+    public addBottom(card: Card) {
+        return this._pile.push(card);
+    }
+}
+
+class DiscardPile {
+    private _pile: Card[] = [];
+
+    public add(card: Card) {
+        return this._pile.unshift(card);
+    }
+
+    public get(index: number) {
+        const card = this._pile.find((_, indexCard) => indexCard === index);
+        if (card) {
+            this._pile = this._pile.splice(index, 1);
+            return card;
+        }
+        return null;
+    }
+
+    public getTop() {
+        return this._pile.shift();
+    }
+}
+
+export class DiscardSearchPile extends DiscardPile {}
+
+export class DiscardEndTurnPile extends DiscardPile {}
+
+export class Player {
+    public name: string;
+    private _points: number = 0;
+    private _handCards: Card[] = [];
+    private _garden: Card[] = [];
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    public get points(): number {
+        return this._points;
+    }
+
+    public addPoints(points: number) {
+        this._points += points;
+    }
+
+    public removePoints(points: number) {
+        this._points -= points;
+    }
+
+    public get handCards(): Card[] {
+        return this._handCards;
+    }
+
+    public addHandCard(card: Card) {
+        this._handCards = [...this._handCards, card];
+    }
+
+    public get garden(): Card[] {
+        return this._garden;
+    }
+
+    public set garden(cards: Card[]) {
+        this._handCards = cards;
+    }
+}
